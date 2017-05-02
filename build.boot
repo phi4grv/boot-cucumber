@@ -6,7 +6,7 @@
   :repositories [["maven" {:url "http://central.maven.org/maven2/"}]
                  ["clojars" {:url "https://clojars.org/repo/"}]])
 
-(def +version+ "1.0.0-SNAPSHOT")
+(def +version+ "1.0.1")
 
 (task-options!
   pom {:project     'vonrosen/boot-cucumber
