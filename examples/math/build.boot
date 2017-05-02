@@ -2,7 +2,7 @@
   :resource-paths #{"src"}
   :source-paths #{"src" "test"}
   :dependencies   '[[adzerk/boot-test "1.2.0" :scope "test"]
-                    [vonrosen/boot-cucumber "1.0.1" :scope "test"]])
+                    [vonrosen/boot-cucumber "1.0.2" :scope "test"]])
 
 (require '[adzerk.boot-test :refer :all]
          '[vonrosen.boot-cucumber :refer :all])
