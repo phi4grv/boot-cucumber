@@ -1,0 +1,5 @@
+(use 'math-example.core :reload)
+(add-stuff 1 2 4546436)
+(subtract-stuff 1 2 4546436)
+(multiply-stuff 1 2 4546436)
+exit
