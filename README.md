@@ -23,6 +23,11 @@ boot cukes
 
 See the [examples] directory for usage examples.
 
+To get help do
+```
+boot cukes -h
+```
+
 ## License
 
 Distributed under the Eclipse Public License either version 1.0 or (at
