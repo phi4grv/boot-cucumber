@@ -1,4 +1,4 @@
-(set-env!  
+(set-env!
   :resource-paths #{"src"}
   :source-paths #{"src" "test"}
   :dependencies   '[[adzerk/boot-test "1.2.0" :scope "test"]

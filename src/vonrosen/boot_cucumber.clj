@@ -25,8 +25,8 @@
    v version bool "Print version."
    i i18n VALUE str " List keywords for in a particular language. Run with \"--i18n help\" to see all languages"
    f feature-dir VALUE str "Directory in which feature files live."]
-  (let [args (vec (flatten 
-                     (remove nil? (conj [] 
+  (let [args (vec (flatten
+                     (remove nil? (conj []
                                         (if glue
                                           ["--glue" glue]
                                           ["--glue" "features"])
@@ -53,8 +53,8 @@
       (reset! task-args args)
       (if glue
         (pom/add-classpath glue)
-        (pom/add-classpath "features"))      
-      (run-tests (symbol "vonrosen.boot-cucumber"))                    
+        (pom/add-classpath "features"))
+      (run-tests (symbol "vonrosen.boot-cucumber"))
       (core/commit! fileset))))
 
 (deftest cucumber-tests
