@@ -25,30 +25,17 @@
    v version bool "Print version."
    i i18n VALUE str " List keywords for in a particular language. Run with \"--i18n help\" to see all languages"
    f feature-dir VALUE str "Directory in which feature files live."]
-  (let [args (vec (flatten
-                     (remove nil? (conj []
-                                        (if glue
-                                          ["--glue" glue]
-                                          ["--glue" "features"])
-                                        (if plugin
-                                          ["--plugin" plugin])
-                                        (if tags
-                                          ["--tags" tags])
-                                        (if name
-                                          ["--name" name])
-                                        (if dry-run
-                                          ["-d"])
-                                        (if monochrome
-                                          ["-m"])
-                                        (if strict
-                                          ["-s"])
-                                        (if version
-                                          ["--version"])
-                                        (if i18n
-                                          ["--i18n" i18n])
-                                        (if feature-dir
-                                          [feature-dir]
-                                          ["features"])))))]
+  (let [args (cond-> ["--glue" glue]
+               plugin (concat ["--plugin" plugin])
+               tags (concat ["--tags" tags])
+               name (concat ["--name" name])
+               i18n (concat ["--i18n" i18n])
+               dry-run (conj "-d")
+               monochrome (conj "-m")
+               strict (conj "-s")
+               version (conj "--version")
+               true (conj feature-dir)
+               true vec)]
     (core/with-pre-wrap fileset
       (reset! task-args args)
       (if glue
@@ -56,6 +43,10 @@
         (pom/add-classpath "features"))
       (run-tests (symbol "vonrosen.boot-cucumber"))
       (core/commit! fileset))))
+
+(core/task-options!
+ cukes {:glue "features"
+        :feature-dir "features"})
 
 (deftest cucumber-tests
   (. cucumber.api.cli.Main (main (into-array @task-args))))
